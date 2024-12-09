@@ -14,7 +14,14 @@ import {
   Subscriptions,
   SubscriptionPlan,
   SubscriptionInterval,
-  RequestAccessInfoStatus, ViewInfo, UpdatePagePayload, CreatePagePayload, CreateSpacePayload, UpdateSpacePayload,
+  RequestAccessInfoStatus,
+  ViewInfo,
+  UpdatePagePayload,
+  CreatePagePayload,
+  CreateSpacePayload,
+  UpdateSpacePayload,
+  Role,
+  WorkspaceMember,
 } from '@/application/types';
 import { GlobalComment, Reaction } from '@/application/comment.type';
 import { initGrantService, refreshToken } from '@/application/services/js-services/http/gotrue';
@@ -1398,4 +1405,67 @@ export async function uploadFile (workspaceId: string, viewId: string, file: Fil
   }
 
   return Promise.reject(response?.data);
+}
+
+export async function inviteMembers (workspaceId: string, emails: string[]) {
+  const url = `/api/workspace/${workspaceId}/invite`;
+
+  const payload = emails.map(e => ({
+    email: e,
+    role: Role.Member,
+  }));
+
+  const res = await axiosInstance?.post<{
+    code: number;
+    message: string;
+  }>(url, payload);
+
+  if (res?.data.code === 0) {
+    return;
+  }
+
+  return Promise.reject(res?.data);
+}
+
+export async function getMembers (workspaceId: string) {
+  const url = `/api/workspace/${workspaceId}/member`;
+  const res = await axiosInstance?.get<{
+    code: number;
+    data: WorkspaceMember[];
+    message: string;
+  }>(url);
+
+  if (res?.data.code === 0) {
+    return res?.data.data;
+  }
+
+  return Promise.reject(res?.data);
+}
+
+export async function leaveWorkspace(workspaceId: string) {
+  const url = `/api/workspace/${workspaceId}/leave`;
+  const res = await axiosInstance?.post<{
+    code: number;
+    message: string;
+  }>(url);
+
+  if (res?.data.code === 0) {
+    return;
+  }
+
+  return Promise.reject(res?.data);
+}
+
+export async function deleteWorkspace(workspaceId: string) {
+  const url = `/api/workspace/${workspaceId}`;
+  const res = await axiosInstance?.delete<{
+    code: number;
+    message: string;
+  }>(url);
+
+  if (res?.data.code === 0) {
+    return;
+  }
+
+  return Promise.reject(res?.data);
 }

@@ -883,6 +883,19 @@ export enum RequestAccessInfoStatus {
   Rejected = 2,
 }
 
+export enum Role {
+  Owner = "Owner",
+  Member = "Member",
+  Guest = "Guest",
+}
+
+export interface WorkspaceMember {
+  name: string;
+  email: string;
+  avatar_url: string;
+  role: Role
+}
+
 export interface GetRequestAccessInfoResponse {
   request_id: string;
   workspace: Workspace;

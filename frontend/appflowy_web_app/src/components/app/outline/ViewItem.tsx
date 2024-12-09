@@ -89,7 +89,7 @@ function ViewItem ({ view, width, level = 0, renderExtra, expandIds, toggleExpan
           {icon?.value || <ViewIcon
             layout={layout}
             size={'medium'}
-            className={'mr-1'}
+            className={'mr-1 opacity-60'}
           />}
         </div>
         <Tooltip

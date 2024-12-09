@@ -2917,5 +2917,12 @@
     "noAppToOpenFile": "No app to open this file",
     "permissionDenied": "No permission to open this file",
     "unknownError": "File open failed"
+  },
+  "inviteMember": {
+    "requestInviteMembers": "Request to invite members",
+    "addEmail": "Enter emails, separated by `,`",
+    "requestInvites": "Request invites",
+    "inviteAlready": "You've already invited this email: {email}",
+    "inviteSuccess": "Invitation sent successfully"
   }
 }

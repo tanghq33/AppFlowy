@@ -4,6 +4,7 @@ import React, { lazy } from 'react';
 import { Favorite } from '@/components/app/favorite';
 import { Workspaces } from '@/components/app/workspaces';
 import Outline from 'src/components/app/outline/Outline';
+import { UIVariant } from '@/application/types';
 
 const SideBarBottom = lazy(() => import('@/components/app/SideBarBottom'));
 
@@ -26,22 +27,27 @@ function SideBar ({
       onResizeWidth={onResizeDrawerWidth}
       width={drawerWidth}
       open={drawerOpened}
+      variant={UIVariant.App}
       onClose={() => toggleOpenDrawer(false)}
       header={<Workspaces />}
     >
       <div
-        className={'flex w-full flex-1 flex-col'}
+        className={'flex w-full gap-1 flex-1 flex-col'}
       >
-        <Favorite />
-        <NewPage />
+        <div
+          className={'flex bg-bg-base z-[1] pb-2 flex-col gap-2 justify-around items-center sticky top-12'}
+        >
+          <Favorite/>
+          <NewPage/>
+        </div>
         <Outline
           width={drawerWidth}
         />
 
-        <SideBarBottom />
+        <SideBarBottom/>
       </div>
     </OutlineDrawer>
-  );
+);
 }
 
 export default SideBar;

@@ -6,6 +6,7 @@ import AppFlowyPower from '../appflowy-power/AppFlowyPower';
 import { createHotKeyLabel, HOT_KEY_NAME } from '@/utils/hotkeys';
 import { Drawer, IconButton, Tooltip } from '@mui/material';
 import { useTranslation } from 'react-i18next';
+import { UIVariant } from '@/application/types';
 
 export function OutlineDrawer ({ header, variant, open, width, onClose, children, onResizeWidth }: {
   open: boolean;
@@ -14,7 +15,7 @@ export function OutlineDrawer ({ header, variant, open, width, onClose, children
   children: React.ReactNode;
   onResizeWidth: (width: number) => void;
   header?: React.ReactNode;
-  variant?: 'app' | 'publish';
+  variant?: UIVariant;
 }) {
   const { t } = useTranslation();
 
@@ -49,7 +50,8 @@ export function OutlineDrawer ({ header, variant, open, width, onClose, children
       <div className={'flex h-full relative min-h-full flex-col overflow-y-auto overflow-x-hidden appflowy-scroller'}>
         <div
           style={{
-            backdropFilter: 'blur(4px)',
+            backdropFilter: variant === UIVariant.Publish ? 'blur(4px)' : undefined,
+            backgroundColor: variant === UIVariant.App ? 'var(--bg-base)' : undefined
           }}
           className={'flex transform-gpu z-10 h-[48px] sticky top-0 items-center justify-between'}
         >
