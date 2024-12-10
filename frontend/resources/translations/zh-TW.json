@@ -76,9 +76,12 @@
   },
   "workspace": {
     "chooseWorkspace": "選擇你的工作區",
+    "defaultName": "我的工作區",
     "create": "建立工作區",
+    "learnMore": "了解更多",
     "reset": "重設工作區",
     "renameWorkspace": "重新命名工作區",
+    "workspaceNameCannotBeEmpty": "工作區名稱不可為空",
     "resetWorkspacePrompt": "重設工作區將刪除其中所有頁面和資料。你確定要重設工作區嗎？或者，你可以聯絡支援團隊來恢復工作區。",
     "hint": "工作區",
     "notFoundError": "找不到工作區",
@@ -119,9 +122,17 @@
     "publishToTheWebHint": "使用 AppFlowy 建立網站",
     "publish": "發佈",
     "unPublish": "取消發佈",
+    "visitSite": "訪問網站",
     "exportAsTab": "導出為",
     "publishTab": "發佈",
-    "shareTab": "分享"
+    "shareTab": "分享",
+    "publishOnAppFlowy": "在 AppFlowy 發布",
+    "shareTabTitle": "邀請他人來協作",
+    "shareTabDescription": "與任何人輕鬆協作",
+    "copyLinkSuccess": "鏈接已複製到剪貼板",
+    "copyShareLink": "複製分享鏈接",
+    "copyLinkFailed": "無法將鏈接複製到剪貼板",
+    "copyLinkToBlockSuccess": "區塊鏈接已複製到剪貼板"
   },
   "moreAction": {
     "small": "小",
